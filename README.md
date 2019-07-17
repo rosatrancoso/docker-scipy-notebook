@@ -6,15 +6,15 @@ Docker image inherited from [jupyter/scipy-notebook](https://github.com/jupyter/
 
 1. Build
 
-    docker build -t rosatrancoso/scipy-notebook .
+    `docker build -t rosatrancoso/scipy-notebook .`
 
 2. Push
 
-    docker push rosatrancoso/scipy-notebook
+    `docker push rosatrancoso/scipy-notebook`
 
 3. Run
 
-    export UID=`id -u`; export GID=`id -g`; docker-compose up -d
+    ```export UID=`id -u`; export GID=`id -g`; docker-compose up -d```
 
 
 
