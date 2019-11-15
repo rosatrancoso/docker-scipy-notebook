@@ -1,12 +1,13 @@
 # export UID=`id -u`; export GID=`id -g`; docker-compose up -d
 
 test:
-  image: rosatrancoso/scipy-notebook
+  build: .
+  #image: rosatrancoso/scipy-notebook
   tty: True
   ports:
     - 8888:8888
   volumes:
-    - $PWD:/home/jovyan/work
+    - $HOME/Documents/:/home/jovyan/work
   environment:
     - JUPYTER_ENABLE_LAB=yes
     - NB_UID=$UID #$(id -u)

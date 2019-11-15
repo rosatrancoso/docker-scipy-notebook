@@ -3,9 +3,10 @@ LABEL maintainer="Rosa Trancoso <rosatrancoso@gmail.com>"
 
 USER root
 
-RUN conda install --yes vim wgrib2 \
+RUN conda install --yes vim \
+        wgrib2 netcdf4 \
         xarray cartopy s3fs \
-        pynio cfgrib &&\
+        pygrib pynio cfgrib &&\
     conda clean --all -f -y
 
 
