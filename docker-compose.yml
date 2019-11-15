@@ -8,6 +8,7 @@ test:
     - 8888:8888
   volumes:
     - $HOME/Documents/:/home/jovyan/work
+    - $HOME:$HOME
   environment:
     - JUPYTER_ENABLE_LAB=yes
     - NB_UID=$UID #$(id -u)
