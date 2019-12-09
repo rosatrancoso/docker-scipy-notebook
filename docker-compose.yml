@@ -1,6 +1,6 @@
 # export UID=`id -u`; export GID=`id -g`; docker-compose up -d
 
-test:
+general:
   build: .
   #image: rosatrancoso/scipy-notebook
   tty: True
