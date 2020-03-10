@@ -2,7 +2,6 @@
 
 general:
   build: .
-  #image: rosatrancoso/scipy-notebook
   tty: True
   ports:
     - 8888:8888
