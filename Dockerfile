@@ -8,7 +8,8 @@ RUN conda install --yes vim \
         xarray cartopy s3fs \
         pygrib pynio cfgrib \
         cdo \
-        geopandas mplleaflet folium &&\
+        geopandas descartes \
+        mplleaflet folium &&\
     conda clean --all -f -y
 
 
