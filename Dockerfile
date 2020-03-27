@@ -12,4 +12,8 @@ RUN conda install --yes vim \
         mplleaflet folium &&\
     conda clean --all -f -y
 
+RUN conda install --yes dash &&\
+    pip install jupyter-plotly-dash &&\
+    conda install --yes jupyter-server-proxy
+
 
