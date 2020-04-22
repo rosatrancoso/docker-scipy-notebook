@@ -16,4 +16,15 @@ RUN conda install --yes dash &&\
     pip install jupyter-plotly-dash &&\
     conda install --yes jupyter-server-proxy
 
+# from mpl_toolkits.basemap import Basemap
+RUN conda install -y basemap
+# /opt/conda/share/proj
+ENV PROJ_LIB="${CONDA_DIR}/share/proj"
+RUN echo "PROJ_LIB = $PROJ_LIB"
+
+
+RUN conda install -y jupyter_contrib_nbextensions
+
+# pip install autopep8
+# pip install jupyter_contrib_nbextensions
 
