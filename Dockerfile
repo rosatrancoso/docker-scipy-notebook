@@ -22,3 +22,5 @@ RUN conda install -y basemap
 ENV PROJ_LIB="${CONDA_DIR}/share/proj"
 RUN echo "PROJ_LIB = $PROJ_LIB"
 
+
+
