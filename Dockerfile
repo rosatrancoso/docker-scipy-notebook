@@ -22,9 +22,3 @@ RUN conda install -y basemap
 ENV PROJ_LIB="${CONDA_DIR}/share/proj"
 RUN echo "PROJ_LIB = $PROJ_LIB"
 
-
-RUN conda install -y jupyter_contrib_nbextensions
-
-# pip install autopep8
-# pip install jupyter_contrib_nbextensions
-
