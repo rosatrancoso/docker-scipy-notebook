@@ -7,6 +7,7 @@ general:
   ports:
     - 8888:8888
   volumes:
-    - /Users/rosa/Documents:/home/jovyan/work
+    - $HOME/Documents:/home/jovyan/work/Documents
+    - $HOME/Hysplit4:/home/jovyan/work/Hysplit4
   environment:
     - JUPYTER_ENABLE_LAB=yes
