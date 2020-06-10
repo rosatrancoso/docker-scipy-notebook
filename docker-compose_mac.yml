@@ -8,6 +8,6 @@ general:
     - 8888:8888
   volumes:
     - $HOME/Documents:/home/jovyan/work/Documents
-    - $HOME/Hysplit4:/home/jovyan/work/Hysplit4
+    - $HOME/hysplit:/home/jovyan/work/hysplit
   environment:
     - JUPYTER_ENABLE_LAB=yes
