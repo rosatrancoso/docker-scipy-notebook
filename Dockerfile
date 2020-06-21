@@ -32,3 +32,5 @@ RUN conda install -y \
     dos2unix \
     cfunits
 
+# xarray with georeferencing
+# RUN conda install -y salem
