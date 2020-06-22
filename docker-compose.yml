@@ -6,9 +6,10 @@ general:
   ports:
     - 8888:8888
   volumes:
-    - $HOME/Documents/:/home/jovyan/work
-    - $HOME:$HOME
+    - $HOME/Documents:/home/jovyan/work/Documents
+    - $HOME/hysplit:/home/jovyan/work/hysplit
   environment:
+    - JUPYTER_TOKEN=chocolate
     - JUPYTER_ENABLE_LAB=yes
     - NB_UID=$UID #$(id -u)
     - NB_GID=$GID #(id -g)
