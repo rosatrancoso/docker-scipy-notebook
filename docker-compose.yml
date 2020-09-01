@@ -8,6 +8,7 @@ general:
   volumes:
     - $HOME/Documents:/home/jovyan/work/Documents
     - $HOME/hysplit:/home/jovyan/work/hysplit
+    - $HOME/scratch:/home/jovyan/work/scratch
   environment:
     - JUPYTER_TOKEN=chocolate
     - JUPYTER_ENABLE_LAB=yes

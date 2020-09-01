@@ -1,36 +1,35 @@
-FROM jupyter/scipy-notebook:1e36f7c13193
+FROM jupyter/scipy-notebook:6d42503c684f
 LABEL maintainer="Rosa Trancoso <rosatrancoso@gmail.com>"
 
 USER root
 
-RUN conda install -y \
-        vim \
-        wgrib2 wgrib netcdf4 \
-        xarray cartopy s3fs \
+RUN time conda install -y \
+        vim s3fs netcdf4 \
+        xarray cartopy \
+        geopandas descartes \
+        mplleaflet folium \
+        # grib stuff
+        wgrib2 wgrib \
         pygrib pynio cfgrib \
         cdo \
-        geopandas descartes \
-        mplleaflet folium
-    #     &&\
-    # conda clean --all -f -y
+        # stuff to compile hysplit ##
+        fortran-compiler \
+        netcdf-fortran \
+        dos2unix \
+        cfunits  \
+&&      conda clean --all -f -y
 
-## Dash applications ##
-RUN conda install --yes dash &&\
-    pip install jupyter-plotly-dash &&\
-    conda install --yes jupyter-server-proxy
-
-# from mpl_toolkits.basemap import Basemap
-RUN conda install -y basemap
+# # from mpl_toolkits.basemap import Basemap
+# RUN time conda install -y basemap
 # /opt/conda/share/proj
 ENV PROJ_LIB="${CONDA_DIR}/share/proj"
 RUN echo "PROJ_LIB = $PROJ_LIB"
 
-## stuff to compile hysplit ##
-RUN conda install -y \
-    fortran-compiler \
-    netcdf-fortran \
-    dos2unix \
-    cfunits
+
+## Dash applications ##
+# RUN conda install --yes dash &&\
+#     pip install jupyter-plotly-dash &&\
+#     conda install --yes jupyter-server-proxy
 
 # xarray with georeferencing
 # RUN conda install -y salem
