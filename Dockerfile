@@ -17,7 +17,7 @@ RUN time conda install -y \
         netcdf-fortran \
         dos2unix \
         cfunits  \
-&&      conda clean --all -f -y
+&&      conda clean -y --all -f
 
 # # from mpl_toolkits.basemap import Basemap
 # RUN time conda install -y basemap
