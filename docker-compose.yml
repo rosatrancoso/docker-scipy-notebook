@@ -9,6 +9,8 @@ general:
     - $HOME/Documents:/home/jovyan/work/Documents
     - $HOME/hysplit:/home/jovyan/work/hysplit
     - $HOME/scratch:/home/jovyan/work/scratch
+    - $HOME/.aws:/.aws
+    - $HOME/.aws:/home/jovyan/.aws
   environment:
     - JUPYTER_TOKEN=chocolate
     - JUPYTER_ENABLE_LAB=yes

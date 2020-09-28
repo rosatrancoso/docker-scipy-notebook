@@ -4,8 +4,8 @@ LABEL maintainer="Rosa Trancoso <rosatrancoso@gmail.com>"
 USER root
 
 RUN time conda install -y \
-        vim s3fs netcdf4 \
-        xarray cartopy \
+        vim boto3 s3fs \
+        netcdf4  xarray cartopy \
         geopandas descartes \
         mplleaflet folium \
         # grib stuff
