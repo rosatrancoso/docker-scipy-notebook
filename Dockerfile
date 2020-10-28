@@ -5,6 +5,7 @@ LABEL maintainer="Rosa Trancoso <rosatrancoso@gmail.com>"
 USER $NB_UID
 
 RUN conda install --yes \
+    cartopy \
     matplotlib==3.3.0 \
     netcdf4 \
     pandas==1.0.5 \
