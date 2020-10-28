@@ -1,13 +1,27 @@
-# export UID=`id -u`; export GID=`id -g`; docker-compose up -d
+# docker-compose up -d
+
+orig:
+  image: jupyter/scipy-notebook:latest
+  tty: True
+  ports:
+    - 8889:8888
+  volumes:
+    - $HOME/Documents:/home/jovyan/work/Documents
+    - $HOME/hysplit:/home/jovyan/work/hysplit
+    - $HOME/scratch:/home/jovyan/work/scratch
+  environment:
+    - JUPYTER_TOKEN=chocolate
+    - JUPYTER_ENABLE_LAB=yes
 
 general:
   build: .
-  #image: rosatrancoso/scipy-notebook
   tty: True
   ports:
     - 8888:8888
   volumes:
     - $HOME/Documents:/home/jovyan/work/Documents
     - $HOME/hysplit:/home/jovyan/work/hysplit
+    - $HOME/scratch:/home/jovyan/work/scratch
   environment:
+    - JUPYTER_TOKEN=chocolate
     - JUPYTER_ENABLE_LAB=yes
