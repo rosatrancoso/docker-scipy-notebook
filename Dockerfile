@@ -1,11 +1,13 @@
-FROM jupyter/scipy-notebook:6d42503c684f
+#FROM jupyter/scipy-notebook:6d42503c684f
+FROM jupyter/scipy-notebook
 LABEL maintainer="Rosa Trancoso <rosatrancoso@gmail.com>"
 
 USER root
 
 RUN time conda install -y \
         vim boto3 s3fs \
-        netcdf4  xarray cartopy \
+        netcdf4  pandas==1.0.5 \
+        xarray cartopy \
         geopandas descartes \
         mplleaflet folium \
         # grib stuff
