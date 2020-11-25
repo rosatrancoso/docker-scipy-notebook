@@ -9,6 +9,7 @@ RUN conda install --yes \
     matplotlib==3.3.0 \
     netcdf4 \
     pandas==1.0.5 \
+    pyyaml \
     scipy \
     xarray \
 &&  conda clean --all -f -y
