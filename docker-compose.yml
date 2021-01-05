@@ -12,6 +12,7 @@ general:
     - $HOME/.aws:/.aws
     - $HOME/.aws:/home/jovyan/.aws
   environment:
+    - REPOSMS=/home/jovyan/work/Documents/MS/git
     - JUPYTER_TOKEN=chocolate
     - JUPYTER_ENABLE_LAB=yes
     - NB_UID=$UID #$(id -u)
