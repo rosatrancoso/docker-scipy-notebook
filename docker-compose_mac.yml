@@ -1,35 +1,55 @@
 # docker-compose up -d
 
-orig:
-  image: jupyter/scipy-notebook:latest
-  tty: True
-  ports:
-    - 8889:8888
-  volumes:
-    - $HOME/Documents:/home/jovyan/work/Documents
-    - $HOME/hysplit:/home/jovyan/work/hysplit
-    - $HOME/scratch:/home/jovyan/work/scratch
-  environment:
-    - REPOSMS=/home/jovyan/work/Documents/MS/git
-    - JUPYTER_TOKEN=chocolate
-    - JUPYTER_ENABLE_LAB=yes
+version: "3.3"
 
-general:
-  build: .
-  tty: True
-  ports:
-    - 8888:8888
-  volumes:
-    - $HOME/Documents:/home/jovyan/work/Documents
-    - $HOME/hysplit:/home/jovyan/work/hysplit
-    - $HOME/scratch:/home/jovyan/work/scratch
-    - $HOME/.aws:/.aws
-    - $HOME/.aws:/home/jovyan/.aws
-  environment:
-    - REPOSMS=/home/jovyan/work/Documents/MS/git
-    - JUPYTER_TOKEN=chocolate
-    - JUPYTER_ENABLE_LAB=yes
+services:
 
-    # - NB_UID=$UID #$(id -u)
-    # - NB_GID=$GID #(id -g)
+  scipy_orig:
+    image: jupyter/scipy-notebook:latest
+    tty: True
+    ports:
+      - 8889:8888
+    volumes:
+      - $HOME/Documents:/home/jovyan/work/Documents
+      - $HOME/hysplit:/home/jovyan/work/hysplit
+      - $HOME/scratch:/home/jovyan/work/scratch
+    environment:
+      - REPOSMS=/home/jovyan/work/Documents/MS/git
+      - JUPYTER_TOKEN=chocolate
+      - JUPYTER_ENABLE_LAB=yes
 
+  scipy_leaflet:
+    build:
+      context: .
+      dockerfile: Dockerfile.leaflet
+    tty: True
+    ports:
+      - 8886:8888
+    volumes:
+      - $HOME/Documents:/home/jovyan/work/Documents
+      - $HOME/hysplit:/home/jovyan/work/hysplit
+      - $HOME/scratch:/home/jovyan/work/scratch
+    environment:
+      - REPOSMS=/home/jovyan/work/Documents/MS/git
+      - JUPYTER_TOKEN=chocolate
+      - JUPYTER_ENABLE_LAB=yes
+
+  general:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    tty: True
+    ports:
+      - 8888:8888
+    volumes:
+      - $HOME/Documents:/home/jovyan/work/Documents
+      - $HOME/hysplit:/home/jovyan/work/hysplit
+      - $HOME/scratch:/home/jovyan/work/scratch
+      - $HOME/.aws:/.aws
+      - $HOME/.aws:/home/jovyan/.aws
+    environment:
+      - REPOSMS=/home/jovyan/work/Documents/MS/git
+      - JUPYTER_TOKEN=chocolate
+      - JUPYTER_ENABLE_LAB=yes
+      # - NB_UID=$UID #$(id -u)
+      # - NB_GID=$GID #(id -g)
