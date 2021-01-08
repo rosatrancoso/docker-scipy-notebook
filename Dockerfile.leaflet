@@ -22,5 +22,19 @@ RUN jupyter labextension list
 # from ipyleaflet import Map
 # Map()
 
-# https://github.com/davidbrochart/xarray_leaflet
-RUN conda install -y -c conda-forge xarray_leaflet
+# this doesn't work (installs but cant see xarray data) ------
+# RUN conda install -y -c conda-forge nodejs ipyspin
+# RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager ipyspin --no-build &&\
+#     jupyter lab build -y &&\
+#     jupyter lab clean -y
+
+# RUN jupyter --version
+# RUN jupyter labextension list
+
+# RUN conda install -y -c conda-forge rioxarray
+# RUN conda install -y -c conda-forge xarray_leaflet
+
+# RUN jupyter nbextension enable --py ipyspin --sys-prefix
+### end of doesn;t work -----
+
+RUN conda install -c conda-forge geopandas
