@@ -1,4 +1,3 @@
-#FROM jupyter/scipy-notebook:6d42503c684f
 FROM jupyter/minimal-notebook
 LABEL maintainer="Rosa Trancoso <rosatrancoso@gmail.com>"
 

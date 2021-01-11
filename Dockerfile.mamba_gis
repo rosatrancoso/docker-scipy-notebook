@@ -1,0 +1,23 @@
+# following the scipy-notebook dockerfile
+# https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
+
+FROM jupyter/scipy-notebook as tmp_mamba
+
+RUN conda install -c conda-forge -y \
+    mamba
+
+FROM tmp_mamba
+
+RUN jupyter --version
+RUN jupyter labextension list
+
+
+RUN mamba install -c conda-forge -y \
+    cartopy \
+    geopandas \
+    netcdf4 \
+    xarray
+
+RUN mamba install -c conda-forge -y \
+    folium
+
