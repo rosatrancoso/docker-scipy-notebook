@@ -14,10 +14,10 @@ RUN jupyter labextension list
 
 RUN mamba install -c conda-forge -y \
     cartopy \
+    folium \
     geopandas \
     netcdf4 \
-    xarray
-
-RUN mamba install -c conda-forge -y \
-    folium
+    rasterio \
+    xarray \
+    whitebox
 
