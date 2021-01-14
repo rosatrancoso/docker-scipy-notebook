@@ -16,8 +16,21 @@ RUN mamba install -c conda-forge -y \
     cartopy \
     folium \
     geopandas \
+    ipyleaflet \
     netcdf4 \
     rasterio \
+    rioxarray \
     xarray \
+    xarray_leaflet \
     whitebox
+
+
+RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet --no-build &&\
+    # for xarray_leaflet
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager ipyspin --no-build &&\
+    jupyter lab build -y &&\
+    jupyter lab clean -y
+
+RUN jupyter --version
+RUN jupyter labextension list
 
