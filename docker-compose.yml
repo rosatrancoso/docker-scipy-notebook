@@ -29,7 +29,7 @@ services:
     tty: True
     user: root
     ports:
-      - 8888:8888
+      - 8889:8888
     volumes:
       - $HOME/Documents:/home/jovyan/work/Documents
       - $HOME/hysplit:/home/jovyan/work/hysplit

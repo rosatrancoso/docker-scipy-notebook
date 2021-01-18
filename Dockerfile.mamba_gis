@@ -34,3 +34,7 @@ RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-lea
 RUN jupyter --version
 RUN jupyter labextension list
 
+# WhiteBox downloads data to here when it's called for the first time
+RUN chmod -R a+w /opt/conda/lib/python3.8/site-packages/whitebox/
+
+
