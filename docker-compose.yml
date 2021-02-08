@@ -1,5 +1,4 @@
 # export UID=`id -u`; export GID=`id -g`; docker-compose up -d scipy_gis
-
 version: "3.3"
 
 services:
