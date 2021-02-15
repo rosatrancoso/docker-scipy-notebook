@@ -8,9 +8,13 @@ RUN conda install -c conda-forge -y \
 
 FROM tmp_mamba
 
-RUN jupyter --version
-RUN jupyter labextension list
 
+# https://stackoverflow.com/questions/65321798/how-to-config-completer-use-jedi-to-false-in-juypter-notebook-permanently
+# workaround because when setting NB_UID there's a userdel ..
+
+RUN mkdir -p /home/jovyan/.ipython/profile_default &&\
+    chmod -R 777 /home/jovyan/.ipython/ &&\
+    echo 'c.Completer.use_jedi = False' > /home/jovyan/.ipython/profile_default/ipython_kernel_config.py
 
 RUN mamba install -c conda-forge -y \
     cartopy \
@@ -21,34 +25,47 @@ RUN mamba install -c conda-forge -y \
     rasterio \
     rioxarray \
     xarray \
-    xarray_leaflet \
-    whitebox
+    whitebox \
+    wrf-python
 
+RUN jupyter --version &&\
+    jupyter labextension list
 
 RUN jupyter labextension install @jupyterlab/toc --no-build &&\
     jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet --no-build &&\
-    # for xarray_leaflet
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager ipyspin --no-build &&\
     jupyter lab build -y &&\
     jupyter lab clean -y
 
-RUN jupyter --version
-RUN jupyter labextension list
+RUN jupyter --version &&\
+    jupyter labextension list
 
-#WRF Hydro tools for routing
-#WhiteBox downloads data to here when it's called for the first time
+
+# ------------------------
+# WhiteBox fix for NB_UID
+# ------------------------
+
+#WRF Hydro tools for routing; WhiteBox downloads data to here when it's called for the first time
 RUN chmod -R a+w /opt/conda/lib/python3.8/site-packages/whitebox/
 
-# https://stackoverflow.com/questions/65321798/how-to-config-completer-use-jedi-to-false-in-juypter-notebook-permanently
-# workaround because when setting NB_UID there's a userdel ..
-RUN mkdir -p /home/jovyan/.ipython/profile_default &&\
-    chmod -R 777 /home/jovyan/.ipython/ &&\
-    echo 'c.Completer.use_jedi = False' > /home/jovyan/.ipython/profile_default/ipython_kernel_config.py
+# ------------------------
+# xarray_leaflet
+# ------------------------
 
-RUN mamba install -c conda-forge -y plotly=4.14.3
+RUN mamba install -c conda-forge -y \
+    xarray_leaflet &&\
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager ipyspin --no-build &&\
+    jupyter lab build -y &&\
+    jupyter lab clean -y &&\
+    jupyter --version &&\
+    jupyter labextension list
 
-RUN jupyter labextension install jupyterlab-plotly@4.14.3
-RUN jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
+# ------------------------
+# plotly
+# ------------------------
+
+RUN mamba install -c conda-forge -y plotly=4.14.3 \
+    jupyter labextension install jupyterlab-plotly@4.14.3 \
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
 
 RUN jupyter --version &&\
     jupyter labextension list
