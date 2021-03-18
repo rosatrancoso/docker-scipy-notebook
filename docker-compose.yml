@@ -33,6 +33,7 @@ services:
       - $HOME/Documents:/home/jovyan/work/Documents
       - $HOME/hysplit:/home/jovyan/work/hysplit
       - $HOME/scratch:/home/jovyan/work/scratch
+      - $REPOSMS:/source
     environment:
       - REPOSMS=/home/jovyan/work/Documents/MS/git
       - JUPYTER_TOKEN=chocolate
