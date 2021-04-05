@@ -1,12 +1,8 @@
 # following the scipy-notebook dockerfile
 # https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 
-FROM jupyter/scipy-notebook as tmp_mamba
-
-RUN conda install -c conda-forge -y \
-    mamba
-
-FROM tmp_mamba
+FROM jupyter/scipy-notebook
+RUN conda install -c conda-forge -y mamba
 
 
 # https://stackoverflow.com/questions/65321798/how-to-config-completer-use-jedi-to-false-in-juypter-notebook-permanently
@@ -16,12 +12,17 @@ RUN mkdir -p /home/jovyan/.ipython/profile_default &&\
     chmod -R 777 /home/jovyan/.ipython/ &&\
     echo 'c.Completer.use_jedi = False' > /home/jovyan/.ipython/profile_default/ipython_kernel_config.py
 
+RUN jupyter --version &&\
+    jupyter labextension list
+
+
 RUN mamba install -c conda-forge -y \
     cartopy \
     folium \
     geopandas \
     ipyleaflet \
     netcdf4 \
+    pygrib \
     rasterio \
     rioxarray \
     xarray \
@@ -63,9 +64,13 @@ RUN mamba install -c conda-forge -y \
 # plotly
 # ------------------------
 
-RUN mamba install -c conda-forge -y plotly=4.14.3 \
-    jupyter labextension install jupyterlab-plotly@4.14.3 \
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
+RUN mamba install -c conda-forge -y plotly &&\
+    jupyter labextension install jupyterlab-plotly &&\
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget
+
+# RUN mamba install -c conda-forge -y plotly=4.14.3 &&\
+#     jupyter labextension install jupyterlab-plotly@4.14.3 \
+#     jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
 
 RUN jupyter --version &&\
     jupyter labextension list
