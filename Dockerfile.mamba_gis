@@ -22,23 +22,11 @@ RUN mamba install -c conda-forge -y \
     geopandas \
     ipyleaflet \
     netcdf4 \
-    pygrib \
     rasterio \
     rioxarray \
     xarray \
     whitebox \
-    wrf-python
-
-RUN jupyter --version &&\
-    jupyter labextension list
-
-RUN jupyter labextension install @jupyterlab/toc --no-build &&\
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet --no-build &&\
-    jupyter lab build -y &&\
-    jupyter lab clean -y
-
-RUN jupyter --version &&\
-    jupyter labextension list
+    wrf-python \
 
 
 # ------------------------
@@ -48,9 +36,32 @@ RUN jupyter --version &&\
 #WRF Hydro tools for routing; WhiteBox downloads data to here when it's called for the first time
 RUN chmod -R a+w /opt/conda/lib/python3.8/site-packages/whitebox/
 
+
 # ------------------------
-# xarray_leaflet
+# grib stuff
 # ------------------------
+RUN mamba install -c conda-forge -y \
+    pygrib \
+    wgrib \
+    wgrib2
+
+# ------------------------
+# Jupyter extensions & widgets
+# ------------------------
+
+RUN jupyter --version &&\
+    jupyter labextension list
+
+RUN jupyter labextension install @jupyterlab/toc --no-build &&\
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager jupyter-leaflet --no-build &&\
+    jupyter lab build -y &&\
+    jupyter lab clean -y &&\
+    jupyter --version &&\
+    jupyter labextension list
+
+# ~~~~~~~~~~~~~~~~~~~~~~~~
+## xarray_leaflet
+# ~~~~~~~~~~~~~~~~~~~~~~~~
 
 RUN mamba install -c conda-forge -y \
     xarray_leaflet &&\
@@ -60,19 +71,14 @@ RUN mamba install -c conda-forge -y \
     jupyter --version &&\
     jupyter labextension list
 
-# ------------------------
-# plotly
-# ------------------------
+# ~~~~~~~~~~~~~~~~~~~~~~~~
+## plotly
+# ~~~~~~~~~~~~~~~~~~~~~~~~
 
 RUN mamba install -c conda-forge -y plotly &&\
     jupyter labextension install jupyterlab-plotly &&\
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget
-
-# RUN mamba install -c conda-forge -y plotly=4.14.3 &&\
-#     jupyter labextension install jupyterlab-plotly@4.14.3 \
-#     jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.3
-
-RUN jupyter --version &&\
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget &&\
+    jupyter --version &&\
     jupyter labextension list
 
 
