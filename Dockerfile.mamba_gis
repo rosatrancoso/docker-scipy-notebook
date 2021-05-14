@@ -41,6 +41,8 @@ RUN chmod -R a+w /opt/conda/lib/python3.8/site-packages/whitebox/
 # grib stuff
 # ------------------------
 RUN mamba install -c conda-forge -y \
+    # xarray engine
+    cfgrib \
     pygrib \
     wgrib \
     wgrib2
