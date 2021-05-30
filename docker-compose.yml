@@ -12,6 +12,27 @@ services:
     volumes:
       - $HOME/Documents:/home/jovyan/work/Documents
       - $HOME/hysplit:/home/jovyan/work/hysplit
+      - $HOME/Tutorial:/home/jovyan/work/Tutorial
+      - $HOME/scratch:/home/jovyan/work/scratch
+    environment:
+      - REPOSMS=/home/jovyan/work/Documents/MS/git
+      - JUPYTER_TOKEN=chocolate
+      - JUPYTER_ENABLE_LAB=yes
+      - NB_UID=$UID #$(id -u)
+      - NB_GID=$GID #(id -g)
+
+  scipy_basic:
+    build:
+      context: .
+      dockerfile: Dockerfile.mamba_basic
+    tty: True
+    user: root
+    ports:
+      - 8886:8888
+    volumes:
+      - $HOME/Documents:/home/jovyan/work/Documents
+      - $HOME/hysplit:/home/jovyan/work/hysplit
+      - $HOME/Tutorial:/home/jovyan/work/Tutorial
       - $HOME/scratch:/home/jovyan/work/scratch
     environment:
       - REPOSMS=/home/jovyan/work/Documents/MS/git
@@ -28,10 +49,11 @@ services:
     tty: True
     user: root
     ports:
-      - 8889:8888
+      - 8887:8888
     volumes:
       - $HOME/Documents:/home/jovyan/work/Documents
       - $HOME/hysplit:/home/jovyan/work/hysplit
+      - $HOME/Tutorial:/home/jovyan/work/Tutorial
       - $HOME/scratch:/home/jovyan/work/scratch
       - $REPOSMS:/source
     environment:
