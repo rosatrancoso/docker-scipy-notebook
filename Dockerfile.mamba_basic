@@ -1,7 +1,7 @@
 # following the scipy-notebook dockerfile
 # https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 
-FROM jupyter/scipy-notebook
+FROM jupyter/scipy-notebook:python-3.8.8
 RUN conda install -c conda-forge -y mamba
 
 
@@ -16,6 +16,7 @@ RUN jupyter --version &&\
     jupyter labextension list
 
 RUN mamba install -c conda-forge -y \
+    boto3 \
     cartopy \
     netcdf4 \
     xarray
@@ -30,3 +31,9 @@ RUN mamba install -c conda-forge -y \
     wgrib \
     wgrib2
 
+# ------------------------
+# WRF stuff
+# wrf-python:1.3.2.5 pinned to python 3.8
+# ------------------------
+RUN mamba install -c conda-forge -y \
+    wrf-python

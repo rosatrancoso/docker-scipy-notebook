@@ -1,9 +1,8 @@
 # following the scipy-notebook dockerfile
 # https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 
-FROM jupyter/scipy-notebook
+FROM jupyter/scipy-notebook:python-3.8.8
 RUN conda install -c conda-forge -y mamba
-
 
 # https://stackoverflow.com/questions/65321798/how-to-config-completer-use-jedi-to-false-in-juypter-notebook-permanently
 # workaround because when setting NB_UID there's a userdel ..
@@ -17,6 +16,7 @@ RUN jupyter --version &&\
 
 
 RUN mamba install -c conda-forge -y \
+    boto3 \
     cartopy \
     folium \
     geopandas \
@@ -25,16 +25,16 @@ RUN mamba install -c conda-forge -y \
     rasterio \
     rioxarray \
     xarray \
-    whitebox \
-    wrf-python
-
+    whitebox
 
 # ------------------------
 # WhiteBox fix for NB_UID
 # ------------------------
 
 #WRF Hydro tools for routing; WhiteBox downloads data to here when it's called for the first time
-RUN chmod -R a+w /opt/conda/lib/python3.8/site-packages/whitebox/
+RUN SITE_PACKAGES=`python -c 'import site; print(site.getsitepackages()[0])'` &&\
+    echo $SITE_PACKAGES &&\
+    chmod -R a+w $SITE_PACKAGES/whitebox/
 
 
 # ------------------------
@@ -84,3 +84,9 @@ RUN mamba install -c conda-forge -y plotly &&\
     jupyter labextension list
 
 
+# ------------------------
+# WRF stuff
+# wrf-python:1.3.2.5 pinned to python 3.8
+# ------------------------
+RUN mamba install -c conda-forge -y \
+    wrf-python

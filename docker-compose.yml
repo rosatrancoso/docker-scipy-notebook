@@ -10,6 +10,7 @@ services:
     ports:
       - 8888:8888
     volumes:
+      - $HOME/.aws:/home/jovyan/.aws
       - $HOME/Documents:/home/jovyan/work/Documents
       - $HOME/hysplit:/home/jovyan/work/hysplit
       - $HOME/Tutorial:/home/jovyan/work/Tutorial
@@ -30,6 +31,7 @@ services:
     ports:
       - 8886:8888
     volumes:
+      - $HOME/.aws:/home/jovyan/.aws
       - $HOME/Documents:/home/jovyan/work/Documents
       - $HOME/hysplit:/home/jovyan/work/hysplit
       - $HOME/Tutorial:/home/jovyan/work/Tutorial
@@ -51,6 +53,7 @@ services:
     ports:
       - 8887:8888
     volumes:
+      - $HOME/.aws:/home/jovyan/.aws
       - $HOME/Documents:/home/jovyan/work/Documents
       - $HOME/hysplit:/home/jovyan/work/hysplit
       - $HOME/Tutorial:/home/jovyan/work/Tutorial
