@@ -16,9 +16,12 @@ RUN jupyter --version &&\
     jupyter labextension list
 
 RUN mamba install -c conda-forge -y \
+    basemap \
+    basemap-data-hires \
     boto3 \
     cartopy \
     netcdf4 \
+    tree \
     xarray
 
 # ------------------------
