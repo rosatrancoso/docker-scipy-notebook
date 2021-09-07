@@ -32,7 +32,9 @@ RUN mamba install -c conda-forge -y \
     cfgrib \
     pygrib \
     wgrib \
-    wgrib2
+    wgrib2 \
+    # for satellites but it's breaking on cfgrib
+    pyresample 
 
 # ------------------------
 # WRF stuff
