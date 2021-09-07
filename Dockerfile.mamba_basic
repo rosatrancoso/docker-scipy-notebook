@@ -40,3 +40,10 @@ RUN mamba install -c conda-forge -y \
 # ------------------------
 RUN mamba install -c conda-forge -y \
     wrf-python
+
+RUN mamba install -c conda-forge -y \
+    windrose
+
+# for hysplit 
+RUN pip install git+https://github.com/martin-rdz/ARLreader.git
+
