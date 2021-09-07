@@ -45,5 +45,5 @@ RUN mamba install -c conda-forge -y \
     windrose
 
 # for hysplit 
-RUN pip3 install git+https://github.com/martin-rdz/ARLreader.git
-
+#RUN pip3 install git+https://github.com/martin-rdz/ARLreader.git
+RUN pip3 install git+https://github.com/rosatrancoso/ARLreader.git@free_req
