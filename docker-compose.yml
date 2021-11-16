@@ -21,6 +21,7 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
       - NB_GID=$GID #(id -g)
+      - AWS_PROFILE=research-normaluser
 
   scipy_basic:
     build:
@@ -42,6 +43,7 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
       - NB_GID=$GID #(id -g)
+      - AWS_PROFILE=research-normaluser
 
 
   scipy_gis:
@@ -65,3 +67,5 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
       - NB_GID=$GID #(id -g)
+      - AWS_PROFILE=research-normaluser
+
