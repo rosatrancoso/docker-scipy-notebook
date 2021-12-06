@@ -46,7 +46,16 @@ RUN mamba install -c conda-forge -y \
 RUN mamba install -c conda-forge -y \
     windrose
 
+# ------------------------
+# GIS stuff
+# ------------------------
+RUN mamba install -c conda-forge -y \
+    folium \
+    geopandas
+
+
+
 # for hysplit 
-RUN pip3 install xgrads
-#RUN pip3 install git+https://github.com/martin-rdz/ARLreader.git
-#RUN pip3 install git+https://github.com/rosatrancoso/ARLreader.git@free_req
+# RUN pip3 install xgrads
+# RUN pip3 install git+https://github.com/martin-rdz/ARLreader.git
+# RUN pip3 install git+https://github.com/rosatrancoso/ARLreader.git@free_req
