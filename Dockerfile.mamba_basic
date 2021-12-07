@@ -53,6 +53,7 @@ RUN mamba install -c conda-forge -y \
     folium \
     geopandas
 
+RUN mamba install -c conda-forge -y zip
 
 
 # for hysplit 
