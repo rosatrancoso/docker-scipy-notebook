@@ -15,8 +15,9 @@ services:
       - $HOME/hysplit:/home/jovyan/work/hysplit
       - $HOME/Tutorial:/home/jovyan/work/Tutorial
       - $HOME/scratch:/home/jovyan/work/scratch
+      - $REPOS:/home/jovyan/work/git
     environment:
-      - REPOSMS=/home/jovyan/work/Documents/MS/git
+      - REPOS=/home/jovyan/work/git
       - JUPYTER_TOKEN=chocolate
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
@@ -37,8 +38,9 @@ services:
       - $HOME/hysplit:/home/jovyan/work/hysplit
       - $HOME/Tutorial:/home/jovyan/work/Tutorial
       - $HOME/scratch:/home/jovyan/work/scratch
+      - $REPOS:/home/jovyan/work/git
     environment:
-      - REPOSMS=/home/jovyan/work/Documents/MS/git
+      - REPOS=/home/jovyan/work/git
       - JUPYTER_TOKEN=chocolate
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
@@ -60,9 +62,9 @@ services:
       - $HOME/hysplit:/home/jovyan/work/hysplit
       - $HOME/Tutorial:/home/jovyan/work/Tutorial
       - $HOME/scratch:/home/jovyan/work/scratch
-      - $REPOSMS:/source
+      - REPOS=/home/jovyan/work/git
     environment:
-      - REPOSMS=/home/jovyan/work/Documents/MS/git
+      - REPOS=/home/jovyan/work/git
       - JUPYTER_TOKEN=chocolate
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
