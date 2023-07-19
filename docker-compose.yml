@@ -11,9 +11,6 @@ services:
       - 8888:8888
     volumes:
       - $HOME/.aws:/home/jovyan/.aws
-      - $HOME/Documents:/home/jovyan/work/Documents
-      - $HOME/hysplit:/home/jovyan/work/hysplit
-      - $HOME/Tutorial:/home/jovyan/work/Tutorial
       - $HOME/scratch:/home/jovyan/work/scratch
       - $REPOS:/home/jovyan/work/git
     environment:
@@ -22,21 +19,18 @@ services:
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
       - NB_GID=$GID #(id -g)
-      - AWS_PROFILE=research-normaluser
+      - AWS_PROFILE=frsso
 
-  scipy_basic:
+  scipy_py38:
     build:
       context: .
-      dockerfile: Dockerfile.mamba_basic
+      dockerfile: Dockerfile.py38
     tty: True
     user: root
     ports:
       - 8886:8888
     volumes:
       - $HOME/.aws:/home/jovyan/.aws
-      #- $HOME/Documents:/home/jovyan/work/Documents
-      #- $HOME/hysplit:/home/jovyan/work/hysplit
-      #- $HOME/Tutorial:/home/jovyan/work/Tutorial
       - $HOME/scratch:/home/jovyan/work/scratch
       - $REPOS:/home/jovyan/work/git
     environment:
@@ -51,23 +45,20 @@ services:
   scipy_gis:
     build:
       context: .
-      dockerfile: Dockerfile.mamba_gis
+      dockerfile: Dockerfile.gis
     tty: True
     user: root
     ports:
       - 8887:8888
     volumes:
       - $HOME/.aws:/home/jovyan/.aws
-      - $HOME/Documents:/home/jovyan/work/Documents
-      - $HOME/hysplit:/home/jovyan/work/hysplit
-      - $HOME/Tutorial:/home/jovyan/work/Tutorial
       - $HOME/scratch:/home/jovyan/work/scratch
-      - REPOS=/home/jovyan/work/git
+      - $REPOS:/home/jovyan/work/git
     environment:
       - REPOS=/home/jovyan/work/git
       - JUPYTER_TOKEN=chocolate
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
       - NB_GID=$GID #(id -g)
-      - AWS_PROFILE=research-normaluser
+      - AWS_PROFILE=frsso
 
