@@ -1,23 +1,14 @@
-
 # docker-scipy-notebook
 
-Docker image inherited from [jupyter/scipy-notebook](https://github.com/jupyter/docker-stacks/tree/master/scipy-notebook) with my most used tools
+Docker images inherited from [jupyter/scipy-notebook](https://github.com/jupyter/docker-stacks/tree/master/scipy-notebook) with:
 
+- my most used tools
+- my AWS credentials
+- external user for mounted volumes
 
-1. Build
+## Example usage:
 
-    `docker build -t rosatrancoso/scipy-notebook .`
-
-2. Push
-
-    `docker push rosatrancoso/scipy-notebook`
-
-3. Run
-
-    ```export UID=`id -u`; export GID=`id -g`; docker-compose up -d```
-    
-    Small change2
-
+     export UID=`id -u`; export GID=`id -g`; docker compose up -d scipy_orig
 
 
 
