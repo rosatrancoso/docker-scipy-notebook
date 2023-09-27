@@ -48,6 +48,8 @@ RUN mamba install -c conda-forge -y plotly
 #     jupyter --version &&\
 #     jupyter labextension list
 
+#https://hvplot.holoviz.org/user_guide/Geographic_Data.html
+RUN mamba install -c pyviz geoviews
 
 # ------------------------
 # WRF stuff
