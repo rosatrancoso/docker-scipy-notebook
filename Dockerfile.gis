@@ -11,6 +11,7 @@ RUN mamba install -c conda-forge -y \
     folium \
     geopandas \
     ipyleaflet \
+    nco \
     netcdf4 \
     rasterio \
     rioxarray \
