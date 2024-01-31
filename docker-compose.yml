@@ -1,4 +1,4 @@
-# export UID=`id -u`; export GID=`id -g`; docker compose up -d scipy_basic
+# export UID=`id -u`; export GID=`id -g`; docker compose up -d scipy_gis
 version: "3.3"
 
 services:
@@ -54,6 +54,7 @@ services:
       - $HOME/.aws:/home/jovyan/.aws
       - $HOME/scratch:/home/jovyan/work/scratch
       - $REPOS:/home/jovyan/work/git
+      - /mnt/c/Users/rtrancoso/work/gis4wrf/datasets/wrf_geog/landuse_anz:/home/jovyan/work/landuse_anz
     environment:
       - REPOS=/home/jovyan/work/git
       - JUPYTER_TOKEN=chocolate
