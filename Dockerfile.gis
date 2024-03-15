@@ -58,3 +58,23 @@ RUN mamba install -c pyviz geoviews
 # ------------------------
 # RUN mamba install -c conda-forge -y \
 #     wrf-python
+
+#--------------------
+# XESMF
+# -------------------
+
+RUN mamba install -c conda-forge -y \
+    cftime \
+    dask-core \
+    pytest \
+    xesmf
+
+
+ENV ESMFMKFILE=/opt/conda/lib/esmf.mk
+
+#--------------------
+# Install extensions
+# -------------------
+RUN mamba  install -c conda-forge jupyter_contrib_nbextensions
+
+

@@ -54,6 +54,7 @@ services:
       - $HOME/.aws:/home/jovyan/.aws
       - $HOME/scratch:/home/jovyan/work/scratch
       - $REPOS:/home/jovyan/work/git
+      - /mnt/c/Users/rtrancoso/work/gis4wrf/:/home/jovyan/work/gis2wrf
       - /mnt/c/Users/rtrancoso/work/gis4wrf/datasets/wrf_geog/landuse_anz:/home/jovyan/work/landuse_anz
     environment:
       - REPOS=/home/jovyan/work/git
