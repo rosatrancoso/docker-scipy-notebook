@@ -4,7 +4,8 @@ version: "3.3"
 services:
 
   scipy_orig:
-    image: jupyter/scipy-notebook:latest
+    # image: jupyter/scipy-notebook:latest
+    image: quay.io/jupyter/scipy-notebook
     tty: True
     user: root
     ports:
@@ -12,9 +13,8 @@ services:
     volumes:
       - $HOME/.aws:/home/jovyan/.aws
       - $HOME/scratch:/home/jovyan/work/scratch
-      - $REPOS:/home/jovyan/work/git
+      - $HOME/git:/home/jovyan/work/git
     environment:
-      - REPOS=/home/jovyan/work/git
       - JUPYTER_TOKEN=chocolate
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
@@ -33,21 +33,12 @@ services:
     volumes:
       - $HOME/.aws:/home/jovyan/.aws
       - $HOME/scratch:/home/jovyan/work/scratch
-      - $REPOS:/home/jovyan/work/git
-      #- /mnt/c/Users/rtrancoso/OneDrive\ \-\ MetService/Documents/WRF/GeostaticDatasets/landuse_NZ/:/home/jovyan/work/landuse_NZ
-      - "/mnt/c/Users/rtrancoso/OneDrive - MetService/Documents/WRF/GeostaticDatasets/landuse_NZ:/home/jovyan/work/landuse_NZ"
-      #- /mnt/c/Users/rtrancoso/work/gis4wrf/:/home/jovyan/work/gis2wrf
-      #- /mnt/c/Users/rtrancoso/work/gis4wrf/datasets/wrf_geog/landuse_anz:/home/jovyan/work/landuse_anz
+      - $HOME/git:/home/jovyan/work/git
+      #- "/mnt/c/Users/rtrancoso/OneDrive - MetService/Documents/WRF/GeostaticDatasets/landuse_NZ:/home/jovyan/work/landuse_NZ"
+      - /mnt/c/Users/rtrancoso/work/gis4wrf/datasets/albedo_probav_esa2020:home/jovyan/work/albedo_probav_esa2020
     environment:
-      - REPOS=/home/jovyan/work/git
       - JUPYTER_TOKEN=chocolate
       - JUPYTER_ENABLE_LAB=yes
       - NB_UID=$UID #$(id -u)
       - NB_GID=$GID #(id -g)
       - AWS_PROFILE=frsso
-
-  scipy_gis_env:
-    build:
-      context: .
-      dockerfile: Dockerfile.gis_env
-

@@ -1,0 +1,16 @@
+channels:
+  - conda-forge
+dependencies:
+  - awscli
+  - boto3
+  - cartopy
+  - nco
+  - plotly
+  - xarray
+  - rasterio
+  - rioxarray
+  - geopandas
+  - pygrib
+  - wgrib
+  - wgrib2
+  - wrf-python
