@@ -21,26 +21,6 @@ services:
       - NB_GID=$GID #(id -g)
       - AWS_PROFILE=frsso
 
-  scipy_py38:
-    build:
-      context: .
-      dockerfile: Dockerfile.py38
-    tty: True
-    user: root
-    ports:
-      - 8886:8888
-    volumes:
-      - $HOME/.aws:/home/jovyan/.aws
-      - $HOME/scratch:/home/jovyan/work/scratch
-      - $REPOS:/home/jovyan/work/git
-    environment:
-      - REPOS=/home/jovyan/work/git
-      - JUPYTER_TOKEN=chocolate
-      - JUPYTER_ENABLE_LAB=yes
-      - NB_UID=$UID #$(id -u)
-      - NB_GID=$GID #(id -g)
-      - AWS_PROFILE=frsso
-
 
   scipy_gis:
     build:
@@ -65,4 +45,9 @@ services:
       - NB_UID=$UID #$(id -u)
       - NB_GID=$GID #(id -g)
       - AWS_PROFILE=frsso
+
+  scipy_gis_env:
+    build:
+      context: .
+      dockerfile: Dockerfile.gis_env
 
