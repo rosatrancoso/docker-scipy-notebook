@@ -22,10 +22,10 @@ services:
       - AWS_PROFILE=frsso
 
 
-  scipy_gis:
+  geoscipy:
     build:
       context: .
-      dockerfile: Dockerfile.gis
+      dockerfile: Dockerfile
     tty: True
     user: root
     ports:

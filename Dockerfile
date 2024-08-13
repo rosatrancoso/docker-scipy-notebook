@@ -19,7 +19,9 @@ RUN mamba install -y \
 RUN mamba install -y \
     rasterio \
     rioxarray \
-    geopandas
+    geopandas \
+    geojson \
+    ipyleaflet
 
 # grib stuff (30s)
 RUN mamba install -y \
