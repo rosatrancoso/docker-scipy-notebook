@@ -2,34 +2,8 @@
 
 # https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
 # https://github.com/jupyter/docker-stacks/blob/main/images/scipy-notebook/Dockerfile
-
 FROM quay.io/jupyter/scipy-notebook
 LABEL org.opencontainers.image.authors="rosatrancoso@gmail.com"
 
-# basic stuff (1min)
-RUN mamba install -y \
-    awscli \
-    boto3 \
-    cartopy \
-    nco \
-    plotly \
-    xarray
-
-# gis stuff (1min)
-RUN mamba install -y \
-    rasterio \
-    rioxarray \
-    geopandas \
-    geojson \
-    ipyleaflet
-
-# grib stuff (30s)
-RUN mamba install -y \
-    pygrib \
-    wgrib \
-    wgrib2
-
-RUN mamba install -y \
-    wrf-python
-
-
+ADD requirements.yml /tmp/requirements.yml
+RUN mamba env update --name base --file /tmp/requirements.yml

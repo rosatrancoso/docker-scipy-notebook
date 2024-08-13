@@ -23,6 +23,7 @@ services:
 
 
   geoscipy:
+    #image: ghcr.io/rosatrancoso/docker-scipy-notebook:master
     build:
       context: .
       dockerfile: Dockerfile

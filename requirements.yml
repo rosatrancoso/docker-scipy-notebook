@@ -4,13 +4,16 @@ dependencies:
   - awscli
   - boto3
   - cartopy
+  - geojson
+  - geopandas
+  - ipyleaflet
+  - leafmap
   - nco
   - plotly
-  - xarray
+  - pygrib
   - rasterio
   - rioxarray
-  - geopandas
-  - pygrib
   - wgrib
   - wgrib2
   - wrf-python
+  - xarray
