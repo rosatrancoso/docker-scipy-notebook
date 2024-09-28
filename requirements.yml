@@ -9,6 +9,7 @@ dependencies:
   - ipyleaflet
   - leafmap
   - nco
+  - netcdf4
   - plotly
   - pygrib
   - rasterio
@@ -17,3 +18,4 @@ dependencies:
   - wgrib2
   - wrf-python
   - xarray
+  - xarray_leaflet

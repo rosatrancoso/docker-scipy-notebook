@@ -1,4 +1,4 @@
-# export UID=`id -u`; export GID=`id -g`; docker compose up -d scipy_gis
+# export UID=`id -u`; export GID=`id -g`; docker compose up -d geoscipy
 version: "3.3"
 
 services:
@@ -23,10 +23,10 @@ services:
 
 
   geoscipy:
-    #image: ghcr.io/rosatrancoso/docker-scipy-notebook:master
-    build:
-      context: .
-      dockerfile: Dockerfile
+    image: ghcr.io/rosatrancoso/docker-scipy-notebook:master
+    #build:
+    #  context: .
+    #  dockerfile: Dockerfile
     tty: True
     user: root
     ports:
@@ -36,7 +36,7 @@ services:
       - $HOME/scratch:/home/jovyan/work/scratch
       - $HOME/git:/home/jovyan/work/git
       #- "/mnt/c/Users/rtrancoso/OneDrive - MetService/Documents/WRF/GeostaticDatasets/landuse_NZ:/home/jovyan/work/landuse_NZ"
-      - /mnt/c/Users/rtrancoso/work/gis4wrf/datasets/albedo_probav_esa2020:home/jovyan/work/albedo_probav_esa2020
+      - /mnt/c/Users/rtrancoso/work/gis4wrf/datasets/albedo_probav_esa2020:/home/jovyan/work/albedo_probav_esa2020
     environment:
       - JUPYTER_TOKEN=chocolate
       - JUPYTER_ENABLE_LAB=yes
