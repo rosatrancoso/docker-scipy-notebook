@@ -8,6 +8,7 @@ dependencies:
   - geopandas
   - ipyleaflet
   - leafmap
+  - localtileserver
   - nco
   - netcdf4
   - plotly

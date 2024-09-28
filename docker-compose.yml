@@ -22,7 +22,7 @@ services:
       - AWS_PROFILE=frsso
 
 
-  geoscipy:
+  scipy_local:
     image: ghcr.io/rosatrancoso/docker-scipy-notebook:master
     #build:
     #  context: .
@@ -43,3 +43,17 @@ services:
       - NB_UID=$UID #$(id -u)
       - NB_GID=$GID #(id -g)
       - AWS_PROFILE=frsso
+
+  scipy_ec2:
+    image: ghcr.io/rosatrancoso/docker-scipy-notebook:master
+    tty: True
+    user: root
+    ports:
+      - 8887:8888
+    volumes:
+      - /tmp/work:/home/jovyan/work/
+    environment:
+      - JUPYTER_TOKEN=chocolate
+      - JUPYTER_ENABLE_LAB=yes
+
+
