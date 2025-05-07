@@ -3,14 +3,15 @@
 Docker images inherited from [jupyter/scipy-notebook](https://github.com/jupyter/docker-stacks/blob/main/images/scipy-notebook/Dockerfile) with:
 
 - my most used tools
-- my AWS credentials
 - external user for mounted volumes
 
 More info in [docker-stacks notes](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html)
 
-There's a GitHub Actions that builds and pushes the image to `ghcr.io/rosatrancoso/docker-scipy-notebook:master`.
+There's a GitHub Actions that builds and pushes the image:
 
-
+```
+docker pull ghcr.io/rosatrancoso/docker-scipy-notebook:master 
+```
 ## Example usage:
 
      export UID=`id -u`; export GID=`id -g`; docker compose up -d geoscipy
